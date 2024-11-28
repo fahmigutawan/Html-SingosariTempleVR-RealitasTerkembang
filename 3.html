@@ -41,14 +41,16 @@
             }
         });
 
-        AFRAME.registerComponent('toggle-lembunandi', {
+        AFRAME.registerComponent('toggle-box', {
             schema: {
                 text: { type: 'string', default: '' }
             },
             init: function () {
                 const box = document.querySelector('.fixed-box');
+                const boxText = box.querySelector('.box-text');
 
                 this.el.addEventListener('mouseenter', () => {
+                    boxText.textContent = this.data.text;
                     box.style.display = 'flex';
                 });
 
@@ -77,12 +79,18 @@
             z-index: 10;
             cursor: pointer;
         }
+
+        .box-text {
+            padding: 20px;
+        }
     </style>
 </head>
 
 <body>
     <div class="fixed-box">
-        Klik di sini atau geser keluar untuk menutup!
+        <div class="box-text">
+            Klik di sini atau geser keluar untuk menutup!
+        </div>
     </div>
 
     <a-scene>
@@ -95,14 +103,14 @@
         <!-- Lembu nandi -->
         <a-plane position="-6 -1 5.2" width="4" height="0.7" color="black" opacity=".4" rotation="0 80 0"
             toggle-box="text: Lembu Nandi">
-            <a-text value="?" color="#ffffff" align="center" width="8">
+            <a-text value="..." color="#ffffff" align="center" width="8">
             </a-text>
         </a-plane>
 
         <!-- Arca dewi kecil -->
         <a-plane position="-6 -1 2.8" width="0.7" height="0.7" color="black" opacity=".4" rotation="0 80 0"
             toggle-box="text: Lembu Nandi">
-            <a-text value="?" color="#ffffff" align="center" width="8">
+            <a-text value="..." color="#ffffff" align="center" width="8">
             </a-text>
         </a-plane>
 
